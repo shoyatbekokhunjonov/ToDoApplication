@@ -1,0 +1,19 @@
+﻿@model ToDoList
+
+@{ 
+    ViewBag.Title = "Create ToDo List";
+}
+
+<div class="card-deck">
+    <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
+        <form asp-controller="home" asp-action="create" method="post">
+            <div class="card-header">
+                <label asp-for="Name">ToDo List Name</label>
+                <input asp-for="Name" placeholder="Name" />
+            </div>
+            <div class="card-header">
+                <button type="submit" class="btn btn-primary">Create ToDo List</button>
+            </div>
+        </form>
+        </div>
+    </div>

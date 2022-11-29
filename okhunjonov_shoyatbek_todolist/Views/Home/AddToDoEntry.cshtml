@@ -1,0 +1,32 @@
+﻿@model ToDoEntry
+
+@{ 
+    ViewBag.Title = "Create ToDo Entry";
+}
+
+<div class="card-deck">
+    <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
+        <form asp-controller="home" asp-action="addtodoentry" method="post">
+            <input asp-for="ToDoListId" type="hidden" />
+            <div class="card-header">
+                <label asp-for="Title">ToDo Entry Title</label>
+                <input asp-for="Title" placeholder="ToDo Entry Title" />
+            </div>
+            <div class="card-header">
+                <label asp-for="Description">ToDo Entry Description</label>
+                <input asp-for="Description" placeholder="ToDo Entry Description"/>
+            </div>
+            <div class="card-header">
+                <label asp-for="DueDate">ToDo Entry Duedate</label>
+                <input asp-for="DueDate" placeholder="ToDo Entry Due Date" />
+            </div>
+            <div class="card-header">
+                <label asp-for="ToDoEntryStatus">Status of ToDo Entry</label>
+                <select asp-for="ToDoEntryStatus" asp-items="Html.GetEnumSelectList<ToDoEntryStatus>()"></select>
+            </div>
+            <div class="card-header">
+                <button type="submit">Create ToDo Entry</button>
+            </div>
+        </form>
+    </div>
+    </div>

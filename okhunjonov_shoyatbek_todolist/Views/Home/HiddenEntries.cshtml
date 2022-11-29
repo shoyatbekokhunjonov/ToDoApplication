@@ -1,0 +1,41 @@
+﻿@model okhunjonov_shoyatbek_todolist.Models.ViewModels.HomeEntriesDetailsViewModel
+
+@{
+    ViewBag.Title = "ToDo List Details";
+}
+<div class="container card-deck">
+    <div class="card-header">
+        <a asp-controller="home" asp-action="details" asp-route-Id="@Model.ToDoList.Id" class="btn btn-primary">Back to not hidden entries of  @Model.ToDoList.Name</a>
+    </div>
+</div>
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 style="text-align:center; color:red;">@Model.ToDoList.Name</h1>
+                </div>
+                @foreach (var toDoEntry in Model.ToDoList.ToDoEntries)
+                {
+                    if (toDoEntry.ShowStatus != ToDoEntryShowHidden.Show)
+                    {
+                        <h4 style="color:red;">Entry Title: @toDoEntry.Title</h4>
+                        <h4>Description: @toDoEntry.Description</h4>
+                        <h4>Due date: @toDoEntry.DueDate</h4>
+                        <h4>Current status: @toDoEntry.ToDoEntryStatus</h4>
+                        <h4>Creation date: @toDoEntry.CreationDate</h4>
+                        @if (toDoEntry.AdditionalField != null)
+                        {
+                            <h4>Additional note: @toDoEntry.AdditionalField</h4>
+                        }
+                        <hr />
+                        <a asp-controller="home" asp-action="entrydetails" asp-route-Id="@toDoEntry.Id" class="btn btn-primary">Edit</a>
+
+                        <a asp-controller="home" asp-action="show" asp-route-Id="@toDoEntry.Id" class="btn btn-danger">Show</a>
+                        <hr />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,35 @@
+﻿@model okhunjonov_shoyatbek_todolist.Models.ViewModels.HomeIndexViewModel
+
+@{ 
+    ViewBag.Title = "Index";
+}
+
+<div class="container card-deck">
+    <div class="card-header">
+        <a asp-controller="home" asp-action="hiddentodolists" class="btn btn-primary">Hidden ToDo Lists</a>
+    </div>
+    <div class="card-header">
+        <a asp-controller="home" asp-action="entriesduetoday" class="btn btn-primary">ToDo entries that are due today</a>
+    </div>
+</div>
+    <div class="card-deck">
+        @foreach (var toDoList in Model.ToDoLists)
+        {
+            if(toDoList.ToDoListShow != 0) { 
+            <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
+                <div class="card-header">
+                    <h3 style="text-align:center;">@toDoList.Name</h3>
+                </div>
+                <div class="card-header">
+                    <h4 style="text-align:center;">ToDo Entries inside: @toDoList.ToDoEntries.Count()</h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="home" asp-action="details" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">View</a>
+                    <a asp-controller="home" asp-action="delete" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">Delete</a>
+                    <a asp-controller="home" asp-action="edit" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">Update</a>
+                    <a asp-controller="home" asp-action="hidetodolist"></a>
+                </div>
+            </div>
+            }
+        }
+    </div>

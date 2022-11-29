@@ -1,0 +1,48 @@
+﻿@model okhunjonov_shoyatbek_todolist.Models.ViewModels.HomeDetailsViewModel
+
+@{ 
+    ViewBag.Title = "ToDo List Details";
+}
+
+<div class="container card-deck">
+    <div class="card-header">
+        <a asp-controller="home" asp-action="addtodoentry" asp-route-todolistid="@Model.ToDoList.Id" class="btn btn-primary">Add ToDo Entry to @Model.ToDoList.Name</a>
+    </div>
+    <div class="card-header">
+        <a asp-controller="home" asp-action="hiddenentries" asp-route-Id="@Model.ToDoList.Id" class="btn btn-primary">Hidden entries in @Model.ToDoList.Name</a>
+    </div>
+    <div class="card-header">
+        <a asp-controller="home" asp-action="completedentries" asp-route-Id="@Model.ToDoList.Id" class="btn btn-primary">Completed entries in @Model.ToDoList.Name</a>
+    </div>
+</div>
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 style="text-align:center; color:red;">@Model.ToDoList.Name</h1>
+                </div>
+                @foreach (var toDoEntry in Model.ToDoList.ToDoEntries)
+                {
+                    if (toDoEntry.ShowStatus != 0 && toDoEntry.ToDoEntryStatus == ToDoEntryStatus.InProgress || toDoEntry.ToDoEntryStatus == ToDoEntryStatus.NotStarted)
+                    {
+                        <h4 style="color:red;">Entry Title: @toDoEntry.Title</h4>
+                        <h4>Description: @toDoEntry.Description</h4>
+                        <h4>Due date: @toDoEntry.DueDate</h4>
+                        <h4>Current status: @toDoEntry.ToDoEntryStatus</h4>
+                        <h4>Creation date: @toDoEntry.CreationDate</h4>
+                        @if (toDoEntry.AdditionalField != null)
+                        {
+                            <h4>Additional note: @toDoEntry.AdditionalField</h4>
+                        }
+                        <hr />
+                        <a asp-controller="home" asp-action="entrydetails" asp-route-Id="@toDoEntry.Id" class="btn btn-primary">Edit</a>
+                        
+                        <a asp-controller="home" asp-action="hide" asp-route-Id="@toDoEntry.Id" class="btn btn-danger">Hide</a>
+                        <hr />
+                    }
+                }
+            </div>
+    </div>
+    </div>
+
+
