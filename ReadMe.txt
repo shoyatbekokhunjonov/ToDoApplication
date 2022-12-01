@@ -2,7 +2,7 @@ TODO LIST APPLICATION.
 
 Simple web application to manage to do lists.
 
-REQUIREMENTS.
+REQUIREMENTS:
 
 - Windows OS
 - Browser
@@ -10,14 +10,14 @@ REQUIREMENTS.
 - .Net Core 3.1
 - MS SQL Server
 
-SET UP.
+SET UP:
 
 - Clone this project on VS Studio https://github.com/shoyatbekokhunjonov/ToDoListApplication.git.
 - Open appsettings.json file and there edit ConnectionString value according to your database settings.
 - Using Package Manager Console run Update-Database command.
 - Run.
 
-USER GUIDE.
+USER GUIDE:
 
 - No authentication is implemented so anyone can use.
 - You can create a ToDoList.
