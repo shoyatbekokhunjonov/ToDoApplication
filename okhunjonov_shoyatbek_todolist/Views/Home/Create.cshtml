@@ -10,6 +10,7 @@
             <div class="card-header">
                 <label asp-for="Name">ToDo List Name</label>
                 <input asp-for="Name" placeholder="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="card-header">
                 <button type="submit" class="btn btn-primary">Create ToDo List</button>

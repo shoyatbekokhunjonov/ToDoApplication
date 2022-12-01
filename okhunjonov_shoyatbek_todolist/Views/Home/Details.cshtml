@@ -23,7 +23,7 @@
                 </div>
                 @foreach (var toDoEntry in Model.ToDoList.ToDoEntries)
                 {
-                    if (toDoEntry.ShowStatus != 0 && toDoEntry.ToDoEntryStatus == ToDoEntryStatus.InProgress || toDoEntry.ToDoEntryStatus == ToDoEntryStatus.NotStarted)
+                    if (toDoEntry.ShowStatus == ToDoEntryShowHidden.Show && toDoEntry.ToDoEntryStatus != ToDoEntryStatus.Completed)
                     {
                         <h4 style="color:red;">Entry Title: @toDoEntry.Title</h4>
                         <h4>Description: @toDoEntry.Description</h4>

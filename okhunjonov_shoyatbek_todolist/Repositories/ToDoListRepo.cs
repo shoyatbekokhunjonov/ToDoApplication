@@ -7,14 +7,25 @@ using System.Linq;
 
 namespace okhunjonov_shoyatbek_todolist.Repostories
 {
+    /// <summary>
+    /// This is class that inherits from IToDoListRepo interface and implements all signature methods of it.
+    /// </summary>
     public class ToDoListRepo : IToDoListRepo
     {
         private readonly ToDoListDbContext dbContext;
+        /// <summary>
+        /// Injecting DI using constructor.
+        /// </summary>
+        /// <param name="dbContext"></param>
         public ToDoListRepo(ToDoListDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
-
+        /// <summary>
+        /// This method firs assigns specific ToDoEntry according to passed id and if it is not null finds it from database and deletes, at the end returns.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ToDoList</returns>
         public ToDoList Delete(int id)
         {
             var toDoList = dbContext.ToDoLists.Find(id);
@@ -25,17 +36,28 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
             }
             return toDoList;
         }
-
+        /// <summary>
+        /// This method gets specific ToDoList according to given Id and returns.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ToDoList</returns>
         public ToDoList Get(int id)
         {
             return dbContext.ToDoLists.Include(s => s.ToDoEntries).Where(x => x.Id == id).FirstOrDefault();
         }
-
+        /// <summary>
+        /// This method gets all ToDoLists and return them as a list.
+        /// </summary>
+        /// <returns>IEnumerableToDoList</returns>
         public IEnumerable<ToDoList> GetAll()
         {
             return dbContext.ToDoLists.Include(x => x.ToDoEntries);
         }
-        
+        /// <summary>
+        /// This method receives as parameter ToDoList and updates its values and returns
+        /// </summary>
+        /// <param name="updatedtodolist"></param>
+        /// <returns>ToDoList</returns>
         public ToDoList Update(ToDoList updatedtodolist)
         {
             var toDoList = dbContext.ToDoLists.Attach(updatedtodolist);     
@@ -43,7 +65,11 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
             dbContext.SaveChanges();
             return updatedtodolist;
         }
-
+        /// <summary>
+        /// This method receives as a parameter ToDoList and adds it to database and returns.
+        /// </summary>
+        /// <param name="todolist"></param>
+        /// <returns></returns>
         public ToDoList Create(ToDoList todolist)
         {
             dbContext.ToDoLists.Add(todolist);
