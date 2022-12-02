@@ -56,6 +56,20 @@ namespace okhunjonov_shoyatbek_todolist.Controllers
             return View(homeIndexViewModel);
         }
 
+        public IActionResult Hidetodolist(int id)
+        {
+            ToDoList toDoList = _toDoListRepo.Get(id);
+            _toDoListRepo.Hide(toDoList);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Showtodolist(int id)
+        {
+            ToDoList toDoList = _toDoListRepo.Get(id);
+            _toDoListRepo.Show(toDoList);
+            return RedirectToAction("Index");
+        }
+        
         /// <summary>
         /// This controller passes Values, ToDoEntries to be specific to the View.
         /// In a View, method is routed using Id of ToDoList which helps to identify specific ToDoList by unique id.

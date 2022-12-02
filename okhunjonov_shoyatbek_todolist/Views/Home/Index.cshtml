@@ -27,7 +27,7 @@
                     <a asp-controller="home" asp-action="details" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">View</a>
                     <a asp-controller="home" asp-action="delete" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">Delete</a>
                     <a asp-controller="home" asp-action="edit" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">Update</a>
-                    <a asp-controller="home" asp-action="hidetodolist"></a>
+                    <a asp-controller="home" asp-action="hidetodolist" asp-route-Id="@toDoList.Id" class="btn btn-primary m-1">Hide</a>
                 </div>
             </div>
             }

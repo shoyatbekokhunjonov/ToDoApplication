@@ -76,5 +76,19 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
             dbContext.SaveChanges();
             return todolist;
         }
+        public ToDoList Hide(ToDoList toDoList)
+        {
+            var todolist = dbContext.ToDoLists.Find(toDoList.Id);
+            todolist.ToDoListShow = Enums.ToDoListShowHidden.Hidden;
+            dbContext.SaveChanges();
+            return toDoList;
+        }
+        public ToDoList Show(ToDoList toDoList)
+        {
+            var todolist = dbContext.ToDoLists.Find(toDoList.Id);
+            todolist.ToDoListShow = Enums.ToDoListShowHidden.Show;
+            dbContext.SaveChanges();
+            return toDoList;
+        }
     }
 }

@@ -37,5 +37,7 @@ namespace okhunjonov_shoyatbek_todolist.IRepositories
         /// <param name="id"></param>
         /// <returns>ToDoList</returns>
         ToDoList Delete(int id);
+        ToDoList Hide(ToDoList toDoList);
+        ToDoList Show(ToDoList toDoList);
     }
 }
