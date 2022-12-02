@@ -240,14 +240,14 @@ namespace okhunjonov_shoyatbek_todolist.Controllers
         /// </summary>
         /// <returns>IActionResult</returns>
         [HttpPost]
-        public IActionResult Entrydetails(ToDoEntry toDoEntry)
+        public IActionResult Entrydetails(HomeEntriesViewModel toDoEntry)
         {
             if (ModelState.IsValid) { 
             ToDoEntry existingToDoEntry = _toDoEntryRepo.Get(toDoEntry.Id);
             existingToDoEntry.Title = toDoEntry.Title;
             existingToDoEntry.Description = toDoEntry.Description;
             existingToDoEntry.DueDate = toDoEntry.DueDate;
-            existingToDoEntry.ToDoEntryStatus = toDoEntry.ToDoEntryStatus;
+                existingToDoEntry.ToDoEntryStatus = toDoEntry.EntryStatus;
             existingToDoEntry.AdditionalField = toDoEntry.AdditionalField;
             _toDoEntryRepo.Update(existingToDoEntry);
             return RedirectToAction("Index");
