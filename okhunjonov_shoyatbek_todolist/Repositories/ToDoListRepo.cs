@@ -76,6 +76,11 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
             dbContext.SaveChanges();
             return todolist;
         }
+        /// <summary>
+        /// This method receives as a parameter ToDoList and changes its enum status from show to hide and returns.
+        /// </summary>
+        /// <param name="toDoList"></param>
+        /// <returns></returns>
         public ToDoList Hide(ToDoList toDoList)
         {
             var todolist = dbContext.ToDoLists.Find(toDoList.Id);
@@ -83,6 +88,11 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
             dbContext.SaveChanges();
             return toDoList;
         }
+        /// <summary>
+        /// This method receives as parameter ToDoList and changes its enum status from hidden to show and returns.
+        /// </summary>
+        /// <param name="toDoList"></param>
+        /// <returns></returns>
         public ToDoList Show(ToDoList toDoList)
         {
             var todolist = dbContext.ToDoLists.Find(toDoList.Id);
@@ -92,3 +102,4 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
         }
     }
 }
+

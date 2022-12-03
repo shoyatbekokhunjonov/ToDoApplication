@@ -55,14 +55,22 @@ namespace okhunjonov_shoyatbek_todolist.Controllers
             };
             return View(homeIndexViewModel);
         }
-
+        /// <summary>
+        /// This action method using _toDoListRepo get speicifc todolist from database then changes its enum status show to hide.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IActionResult</returns>
         public IActionResult Hidetodolist(int id)
         {
             ToDoList toDoList = _toDoListRepo.Get(id);
             _toDoListRepo.Hide(toDoList);
             return RedirectToAction("Index");
         }
-
+        /// <summary>
+        /// This action method gets specific todolist by given id and changes its enum status from hide to show.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IActionresult</returns>
         public IActionResult Showtodolist(int id)
         {
             ToDoList toDoList = _toDoListRepo.Get(id);

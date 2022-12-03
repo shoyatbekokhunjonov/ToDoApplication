@@ -37,7 +37,17 @@ namespace okhunjonov_shoyatbek_todolist.IRepositories
         /// <param name="id"></param>
         /// <returns>ToDoList</returns>
         ToDoList Delete(int id);
+        /// <summary>
+        /// Signature of Hide mthod that changes enum status from show to hide in database.
+        /// </summary>
+        /// <param name="toDoList"></param>
+        /// <returns>ToDoList</returns>
         ToDoList Hide(ToDoList toDoList);
+        /// <summary>
+        /// This method changes enum status of ToDoList from hidden to show in database.
+        /// </summary>
+        /// <param name="toDoList"></param>
+        /// <returns>ToDoList</returns>
         ToDoList Show(ToDoList toDoList);
     }
 }
