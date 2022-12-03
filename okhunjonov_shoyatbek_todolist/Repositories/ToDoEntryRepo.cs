@@ -1,6 +1,7 @@
 ﻿using okhunjonov_shoyatbek_todolist.Enums;
 using okhunjonov_shoyatbek_todolist.IRepositories;
 using okhunjonov_shoyatbek_todolist.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +31,11 @@ namespace okhunjonov_shoyatbek_todolist.Repostories
         /// <returns>ToDoEntry</returns>
         public ToDoEntry Create(ToDoEntry todoentry)
         {
+            if (string.IsNullOrWhiteSpace(todoentry.Title) || string.IsNullOrWhiteSpace(todoentry.Description))
+            {
+                throw new Exception("Title and description canot be null!");
+            }
+         //if eror abocve, never reach this code
             dbContext.ToDoEntries.Add(todoentry);
             dbContext.SaveChanges();
             return todoentry;

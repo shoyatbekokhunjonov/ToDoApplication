@@ -37,7 +37,8 @@ namespace okhunjonov_shoyatbek_todolist
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddScoped<IToDoEntryRepo, ToDoEntryRepo>();
             services.AddScoped<IToDoListRepo, ToDoListRepo>();
-            services.AddDbContextPool<ToDoListDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ToDoListDb")));
+            services.AddDbContextPool<ToDoListDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("ToDoListDb")));
         }
 
         /// <summary>
