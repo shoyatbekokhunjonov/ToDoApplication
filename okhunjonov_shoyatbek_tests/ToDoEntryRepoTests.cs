@@ -56,7 +56,6 @@ namespace okhunjonov_shoyatbek_tests
             // Arrange
             ToDoListDbContext _context = new ToDoListDbContext(dbContextOptions);
             ToDoEntryRepo _todoEntryRepo = new ToDoEntryRepo(_context);
-
             var item = new ToDoEntry
             {
                 Title = _title,
@@ -187,8 +186,8 @@ namespace okhunjonov_shoyatbek_tests
         {
             return new List<ToDoEntry>()
             {
-                new ToDoEntry() { Id = 1, Title = "Lessons", Description = "Chemistry lesson", DueDate = new DateTime(2022, 12, 4), ShowStatus = okhunjonov_shoyatbek_todolist.Enums.ToDoEntryShowHidden.Show},
-                new ToDoEntry() { Id = 2, Title = "Lessons", Description = "Math lesson", DueDate = new DateTime(2022, 12, 4)},
+                new ToDoEntry() { Id = 1, Title = "Lessons", Description = "Chemistry lesson", DueDate = new DateTime(2022, 12, 5), ShowStatus = okhunjonov_shoyatbek_todolist.Enums.ToDoEntryShowHidden.Show},
+                new ToDoEntry() { Id = 2, Title = "Lessons", Description = "Math lesson", DueDate = new DateTime(2022, 12, 5)},
                 new ToDoEntry() { Id = 3, Title = "Lessons", Description = "Physics lesson" },
                 new ToDoEntry() { Id = 4, Title = "Lessons", Description = "English lesson" },
             };
