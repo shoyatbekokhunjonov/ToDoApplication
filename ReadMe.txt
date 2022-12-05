@@ -12,6 +12,7 @@ REQUIREMENTS:
 
 SET UP:
 
+- Installed .Net SDK is required.
 - Clone this project on VS Studio https://github.com/shoyatbekokhunjonov/ToDoListApplication.git.
 - Open appsettings.json file and there edit ConnectionString value according to your database settings.
 - Using Package Manager Console run Update-Database command.
